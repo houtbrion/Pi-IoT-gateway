@@ -1,0 +1,56 @@
+
+sshで2つのshellをオープンして，片方を「Arduinoからの
+データ受信用」，片方を「Arduinoへのコマンド出力用」と
+分けて利用する
+
+1. 基本パターン
+(1) Arduino側からのデータ受信用shell
+
+root@raspberrypi:/dev# cat ttyACM0
+
+
+Status  Humidity (%)    Temperature (C) (F)
+
+OK      36.2            25.1            77.2
+
+OK      36.2            25.1            77.2 <== 最初2つまで出力した時点でコマンド入力待ちとなる．
+
+OK      36.1            25.1            77.2 <== "a"が入力された後に出力される．(以下同じ)
+
+OK      36.3            25.1            77.2
+
+OK      37.0            25.1            77.2
+
+OK      36.9            25.1            77.2
+
+
+(1) Arduinoへのコマンド用shell
+
+root@raspberrypi:~# cd /dev/
+root@raspberrypi:/dev# echo "a" >>ttyA                                                                             
+ttyACM0  ttyAMA0  
+root@raspberrypi:/dev# echo "a" >>ttyACM0 
+root@raspberrypi:/dev# echo "a" >>ttyACM0 
+root@raspberrypi:/dev# echo "a" >>ttyACM0 
+root@raspberrypi:/dev# echo "a" >>ttyACM0 
+root@raspberrypi:/dev# 
+
+2. Arduinoからの出力に時刻を付与し，ファイルにセーブする場合
+一定時間間隔でArduinoから測定結果を出力させる『周期処理』の場合と
+同じスクリプトがそのまま使える．なお，Arduinoへのコマンド出力は
+1の(1)と同じなので省略．
+
+・Arduino側からのデータ受信用shell
+
+root@raspberrypi:~# cat /dev/ttyACM0 |gawk -f IntervalPush.awk |tee hoge2.txt                                 
+Thu  5 May 09:11:37 JST 2016 Status     Humidity (%)    Temperature (C) (F)
+Thu  5 May 09:11:39 JST 2016 OK 36.0            25.1            77.2
+Thu  5 May 09:11:41 JST 2016 OK 36.0            25.1            77.2
+Thu  5 May 09:11:46 JST 2016 OK 36.1            25.1            77.2
+
+
+
+
+
+
+

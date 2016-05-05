@@ -1,0 +1,24 @@
+
+shellでrootになり，/dev/以下のファイルをオープンすると
+Arduinoが再起動され，結果が定期的にArduinoから
+出力される．
+
+・Arduino側からのデータを受信用し，タイムスタンプを付けてファイルに保存
+  しつつ，さらにパイプで他のコマンドに処理を行わせる事例
+
+root@raspberrypi:~# cat /dev/ttyACM0 |gawk -f IntervalPush.awk |tee hoge2.txt                                 
+Thu  5 May 09:11:37 JST 2016 Status     Humidity (%)    Temperature (C) (F)
+Thu  5 May 09:11:39 JST 2016 OK 36.0            25.1            77.2
+Thu  5 May 09:11:41 JST 2016 OK 36.0            25.1            77.2
+Thu  5 May 09:11:46 JST 2016 OK 36.1            25.1            77.2
+
+
+上のコマンドラインで『InterValPush.awk』はデータを読み取り，
+タイムスタンプを付け，hoge.txtというファイルに内容を保存する
+と共に，標準出力にも書き出す．上のコマンド例では『tee』コマンドに
+なっている部分をクラウド等にデータを送るコマンドで置き換え
+れば良い．
+
+
+
+
