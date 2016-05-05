@@ -35,6 +35,7 @@ root@raspberrypi:/dev# echo "a" >>ttyACM0
 root@raspberrypi:/dev# echo "a" >>ttyACM0 
 root@raspberrypi:/dev# 
 
+
 2. Arduinoからの出力に時刻を付与し，ファイルにセーブする場合
 一定時間間隔でArduinoから測定結果を出力させる『周期処理』の場合と
 同じスクリプトがそのまま使える．なお，Arduinoへのコマンド出力は
