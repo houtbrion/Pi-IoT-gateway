@@ -1,22 +1,22 @@
 
-#Raspberry Pi��IoT�[��
+#Raspberry PiのIoT端末
 
 
-## Arduino�A�g
+## Arduino連携
 
-Arduino�́CI2C��SPI�ڑ��̃Z���T�̃h���C�o��Z���T�̒l��
-��������v���O�����̃T���v�����������J����Ă���C���̃}�C�R����Raspberry Pi
-���ȒP�Ɏg������𐮂��邱�Ƃ��ł���D
+Arduinoは，I2CやSPI接続のセンサのドライバやセンサの値を
+処理するプログラムのサンプルが多数公開されており，他のマイコンやRaspberry Pi
+より簡単に使える環境を整えることができる．
 
-���̂��߁C
-���̃^�C�v�̒[���́CRaspberry Pi��Arduino���V���A��(�d�͋������y�ɂȂ�̂ō���
-��USB�𗘗p)�Őڑ����CArduino�ŃZ���T�̒l��ǂ݂����CRaspberry Pi�Ŏ�����
-�t�^�C�X�g���[�W�ւ̕ۑ��C�K�v�Ȃ�l�b�g���[�N�o�R�ŃT�[�o�ɃA�b�v���[�h����
-(����̎���ł́C�A�b�v���[�h����Ƃ���͖��쐬)�D
+そのため，
+このタイプの端末は，Raspberry PiとArduinoをシリアル(電力供給が楽になるので今回
+はUSBを利用)で接続し，Arduinoでセンサの値を読みだし，Raspberry Piで時刻の
+付与，ストレージへの保存，必要ならネットワーク経由でサーバにアップロードする
+(今回の試作では，アップロードするところは未作成)．
 
-## �r�[�R�����o
+## ビーコン検出
 
-iBeacon�̂悤��BLE�̃r�[�R���V�X�e�������o���ĂȂ�炩�̏������s���[����
-�T���v��
+iBeaconのようなBLEのビーコンシステムを検出してなんらかの処理を行う端末の
+サンプル
 
 

@@ -1,24 +1,24 @@
 
-# Arduino�A�g
+# Arduino連携
 
-���̃^�C�v�̒[���́CRaspberry Pi��Arduino���V���A��(�d�͋������y�ɂȂ�̂ō���
-��USB�𗘗p)�Őڑ����CArduino�ŃZ���T�̒l��ǂ݂����CRaspberry Pi�Ŏ�����
-�t�^�C�X�g���[�W�ւ̕ۑ��C�K�v�Ȃ�l�b�g���[�N�o�R�ŃT�[�o�ɃA�b�v���[�h����
-(����̎���ł́C�A�b�v���[�h����Ƃ���͖��쐬)�D
+このタイプの端末は，Raspberry PiとArduinoをシリアル(電力供給が楽になるので今回
+はUSBを利用)で接続し，Arduinoでセンサの値を読みだし，Raspberry Piで時刻の
+付与，ストレージへの保存，必要ならネットワーク経由でサーバにアップロードする
+(今回の試作では，アップロードするところは未作成)．
 
-## �����A�b�v���[�h
-���̃^�C�v�͈�莞�ԊԊu��Arduino���Z���T�̒l��ǂݎ��C
-Raspberry Pi�ɃV���A���Œʒm����DRaspberry Pi��
-�V���A�����Ď����C�ʒm���ꂽ�f�[�^�͑S�ď�������D
+## 周期アップロード
+このタイプは一定時間間隔でArduinoがセンサの値を読み取り，
+Raspberry Piにシリアルで通知する．Raspberry Piは
+シリアルを監視し，通知されたデータは全て処理する．
 
-## �C�x���g���o
-���̃^�C�v�͏펞Arduino���Z���T�̒l��ǂݎ��C
-���̏����𖞂������ꍇ(�ω������Ȃ�)�̂�
-Raspberry Pi�ɃV���A���Œʒm����DRaspberry Pi��
-�V���A�����Ď����C�ʒm���ꂽ�f�[�^�͑S�ď�������D
+## イベント検出
+このタイプは常時Arduinoがセンサの値を読み取り，
+一定の条件を満たした場合(変化したなど)のみ
+Raspberry Piにシリアルで通知する．Raspberry Piは
+シリアルを監視し，通知されたデータは全て処理する．
 
-## �O���Ăяo��
-������́CArduino��Raspberry Pi����V���A���œ����
-���������M�����ꍇ�����Z���T�̒l��ǂݎ���āC
-������V���A���ő��M����D
+## 外部呼び出し
+こちらは，ArduinoはRaspberry Piからシリアルで特定の
+文字列を受信した場合だけセンサの値を読み取って，
+それをシリアルで送信する．
 
