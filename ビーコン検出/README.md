@@ -66,6 +66,13 @@ E2C56DB5-DFFB-48D2-B060-D0F5A71096E0 6 9 -55
 ```
 
 
+## ビーコンの代替品
+ArduinoBeaconはRedBearLabのBLEシールドを使って，Arduinoで
+ビーコンモドキを作るプログラム．
+
+Raspberry PiのBLEの動作確認用に利用する．
+
+
 ## 参考文献
 ### 考え方や手順などの参考文献
 * [http://qiita.com/katsuyoshi/items/9d5417495a47c4b15ac1](http://qiita.com/katsuyoshi/items/9d5417495a47c4b15ac1)
@@ -75,6 +82,10 @@ E2C56DB5-DFFB-48D2-B060-D0F5A71096E0 6 9 -55
 
 ### 解析スクリプト
 * [http://stackoverflow.com/questions/21733228/can-raspberrypi-with-ble-dongle-detect-ibeacons](http://stackoverflow.com/questions/21733228/can-raspberrypi-with-ble-dongle-detect-ibeacons)
+
+### ArduinoのBLE
+* BLEシールド [http://redbearlab.com/bleshield/](http://redbearlab.com/bleshield/)
+* ArduinoとBLEシールドでビーコンモドキを作る [https://evothings.com/diy-arduino-beacons/](https://evothings.com/diy-arduino-beacons/)
 
 
 
