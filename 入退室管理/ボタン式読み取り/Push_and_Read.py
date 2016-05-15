@@ -63,11 +63,12 @@ def displayOutput(name, button):
         state="Hello Mr."
     else:
         state="Bye Mr."
-    output = datetime.now().strftime("%Y/%m/%d %H:%M:%S") +  state + name
+    #output = datetime.now().strftime("%Y/%m/%d %H:%M:%S") +  state + name
+    output = datetime.now().strftime("%H:%M:%S") +  state + name
     printMessage(output)
     #setText(output)
     setRGB(0,128,64)
-    time.sleep(10)
+    time.sleep(2)
 #
 # 読み取り準備完了の表示
 #
