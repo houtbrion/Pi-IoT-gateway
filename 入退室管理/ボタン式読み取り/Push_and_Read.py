@@ -9,6 +9,13 @@ from datetime import datetime
 from grove_rgb_lcd import *
 import commands
 #
+# グローバル変数の定義
+#
+in_button_pin = 3
+out_button_pin = 4
+debug = 1
+
+#
 # ボタン読み取り関数
 #   -1 : ボタン読み取りエラー
 #    0 : 変化なし
@@ -44,7 +51,7 @@ def checkButtons(in_button_pin, out_button_pin):
 def sensorCheck():
     # 本来は以下の様な外部コマンドでセンサを読んで，変換する．
     # result = commands.getoutput("/usr/local/bin/readSensor")
-    # コマンドの返り値は"erro"か"実際の人の名前などの文字列"
+    # コマンドの返り値は"error"か"実際の人の名前などの文字列"
     result = "XXXX"
     return result
 
@@ -57,22 +64,32 @@ def displayOutput(name, button):
     else:
         state="Bye Mr."
     output = datetime.now().strftime("%Y/%m/%d %H:%M:%S") +  state + name
-    setText(output)
+    printMessage(output)
+    #setText(output)
     setRGB(0,128,64)
     time.sleep(10)
 #
 # 読み取り準備完了の表示
 #
 def displayReady():
-    setText("Ready")
+    printMessage("Ready")
+    #setText("Ready")
     setRGB(0,128,64)
 #
 # 読み取りエラーの表示
 #
 def displayError():
-    setText("Error\nPlease retry.")
+    printMessage("Error\nPlease retry.")
+    #setText("Error\nPlease retry.")
     setRGB(0,128,64)
     time.sleep(.5)
+#
+# LCDとコンソールへのメッセージの出力
+#
+def printMessage(string):
+    setText(string)
+    if debug==1:
+        print "%s" % string
 #
 # 以下メイン処理
 #
@@ -80,9 +97,9 @@ if __name__ == "__main__":
 #
 # グローバル変数の定義
 #
-    in_button_pin = 3
-    out_button_pin = 4
-
+#    in_button_pin = 3
+#    out_button_pin = 4
+#
 #
 # ピンの読み取り設定
 #
