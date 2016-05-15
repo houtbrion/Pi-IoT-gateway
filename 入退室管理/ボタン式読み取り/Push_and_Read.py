@@ -28,13 +28,13 @@ def checkButtons(in_button_pin, out_button_pin):
         print "Out button error"
         return -1
     print "%s In button (3) : %d , Out button (4) : %d" % (datetime.now().strftime("%Y/%m/%d %H:%M:%S"), in_button , out_button)
-    if in_button = 0 and out_button = 0:
+    if in_button == 0 and out_button == 0:
         return 0
-    if in_button = 0 and out_button = 1:
+    if in_button == 0 and out_button == 1:
         return 2
-    if in_button = 1 and out_button = 0:
+    if in_button == 1 and out_button == 0:
         return 1
-    if in_button = 1 and out_button = 1:
+    if in_button == 1 and out_button == 1:
         return 3
 #
 # ボタンが押された時に行う処理(関数)
