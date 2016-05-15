@@ -59,6 +59,7 @@ def displayOutput(name, button):
     output = datetime.now().strftime("%Y/%m/%d %H:%M:%S") + "\n" + state + name
     setText(output)
     setRGB(0,128,64)
+    time.sleep(10)
 #
 # 読み取り準備完了の表示
 #
