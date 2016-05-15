@@ -79,15 +79,15 @@ if __name__ == "__main__":
 #
 # グローバル変数の定義
 #
-in_button_pin = 3
-out_button_pin = 4
+    in_button_pin = 3
+    out_button_pin = 4
 
 #
 # ピンの読み取り設定
 #
 
-grovepi.pinMode(in_button_pin,"INPUT")
-grovepi.pinMode(out_button_pin,"INPUT")
+    grovepi.pinMode(in_button_pin,"INPUT")
+    grovepi.pinMode(out_button_pin,"INPUT")
 
 #
 # メインループ
@@ -95,14 +95,14 @@ grovepi.pinMode(out_button_pin,"INPUT")
 #     ボタンの変化を監視
 #     なにか処理をする(処理結果の文字列を生成)
 #     LCDとコンソールに出力する
-while True:
-    displayReady():
-    buttonState = checkButtons(in_button_pin, out_button_pin)
-    if buttonState != 0:
-        name = sensorCheck()
-        if buttonState < 0 or buttonState == 3 or name=="error":
-            displayError()
-        else:
-            displayOutput(name,buttonState)
-    time.sleep(.5)
+    while True:
+        displayReady():
+        buttonState = checkButtons(in_button_pin, out_button_pin)
+        if buttonState != 0:
+            name = sensorCheck()
+            if buttonState < 0 or buttonState == 3 or name=="error":
+                displayError()
+            else:
+                displayOutput(name,buttonState)
+        time.sleep(.5)
 
