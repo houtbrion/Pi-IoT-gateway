@@ -96,7 +96,7 @@ if __name__ == "__main__":
 #     なにか処理をする(処理結果の文字列を生成)
 #     LCDとコンソールに出力する
     while True:
-        displayReady():
+        displayReady()
         buttonState = checkButtons(in_button_pin, out_button_pin)
         if buttonState != 0:
             name = sensorCheck()
