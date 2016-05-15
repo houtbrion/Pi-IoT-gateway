@@ -9,7 +9,7 @@ from datetime import datetime
 from grove_rgb_lcd import *
 import commands
 #
-# グローバル変数の定義
+# グローバル変数の定義 (C言語の #define の代わり)
 #
 in_button_pin = 3
 out_button_pin = 4
@@ -63,10 +63,8 @@ def displayOutput(name, button):
         state="Hello Mr."
     else:
         state="Bye Mr."
-    #output = datetime.now().strftime("%Y/%m/%d %H:%M:%S") +  state + name
     output = datetime.now().strftime("%H:%M:%S ") + "\n" + state + name
     printMessage(output)
-    #setText(output)
     setRGB(0,128,64)
     time.sleep(2)
 #
@@ -74,14 +72,12 @@ def displayOutput(name, button):
 #
 def displayReady():
     printMessage("Ready")
-    #setText("Ready")
     setRGB(0,128,64)
 #
 # 読み取りエラーの表示
 #
 def displayError():
     printMessage("Error\nPlease retry.")
-    #setText("Error\nPlease retry.")
     setRGB(0,128,64)
     time.sleep(.5)
 #
@@ -96,15 +92,8 @@ def printMessage(string):
 #
 if __name__ == "__main__":
 #
-# グローバル変数の定義
-#
-#    in_button_pin = 3
-#    out_button_pin = 4
-#
-#
 # ピンの読み取り設定
 #
-
     grovepi.pinMode(in_button_pin,"INPUT")
     grovepi.pinMode(out_button_pin,"INPUT")
 
