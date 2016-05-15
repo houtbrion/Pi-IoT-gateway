@@ -56,7 +56,7 @@ def displayOutput(name, button):
         state="Hello Mr."
     else:
         state="Bye Mr."
-    output = datetime.now().strftime("%Y/%m/%d %H:%M:%S") + "\n" + state + name
+    output = datetime.now().strftime("%Y/%m/%d %H:%M:%S") +  state + name
     setText(output)
     setRGB(0,128,64)
     time.sleep(10)
