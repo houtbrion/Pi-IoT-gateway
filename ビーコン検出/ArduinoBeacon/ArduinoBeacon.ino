@@ -31,4 +31,5 @@ void loop()
 {
     // Process BLE events.
     ble_do_events();
+    delay(3000);
 }

@@ -1,0 +1,3 @@
+#!/bin/sh
+/usr/bin/hcitool lescan --duplicates 1>/dev/null &
+/usr/bin/hcidump --raw |/usr/local/bin/ibeacon_parse |awk -f IntervalBeaconPush.awk

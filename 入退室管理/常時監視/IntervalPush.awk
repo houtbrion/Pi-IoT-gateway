@@ -5,26 +5,18 @@
 # なお，行のパターンの判別は，arduino用のDHT系センサのテンプレート
 # プログラムの形式となっている．
 BEGIN{
-    cmd="date";            # 読み取ったデータに日付を付けるためのコマンドを指定
+    cmd="date \"+%Y:%m:%d:%H:%M:%S\"";  # 読み取ったデータに日付を付けるためのコマンドを指定
     filename = "hoge.txt"; # サーバにデータをアップロードする代わりにファイルに
                            # 書き込むプログラムとなっているため，データを書き込む
                            # デフォルトのファイル名を指定する．
-    flag=0;
-}
-$0~/^Status/{              # catでArduinoがつながっているシリアルポートをオープンすると，
-                           # Arduinoが再起動するので，再起動直後の最初の出力を検出して，
-                           # それ以後の文(行)を処理対象とするため，フラグを立てる．
     flag=1;
-    cmd | getline buff;
-    close(cmd);
-    printf("%s %s\n",buff,$0);
 }
-$0~/^OK/{
+$0~/^OK/ || $0 ~/^close/ || $0 ~/^open/ {
     if (flag==1) {
         cmd | getline buff;
         close(cmd);
         printf("%s %s\n",buff,$0);
-        cmd2=sprintf("echo %s,%s >> %s",buff,$0,filename); # ここの部分のコマンドはサーバへデータをpushするコマンドと入れ替える
+        cmd2=sprintf("echo %s %s >> %s",buff,$0,filename); # ここの部分のコマンドはサーバへデータをpushするコマンドと入れ替える
         system(cmd2);
         close(cmd2);
     }
